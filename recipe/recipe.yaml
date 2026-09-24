@@ -1,18 +1,19 @@
 schema_version: 1
 
 context:
-  version: "0.30"
+  version: '0.31'
+  build_number: '0'
 
 package:
-  name: name
+  name: cirun
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/c/cirun/cirun-${{ version }}.tar.gz
-  sha256: bb4401968fe1fad050ffc5d361c436debe483a6e3ddcd7f6e8066dcd3e750ec1
+- url: https://files.pythonhosted.org/packages/source/c/cirun/cirun-${{ version }}.tar.gz
+  sha256: fe6199a1a889697fe6864b4d904e851273717367b9872cfa3d865dec8a2768d4
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
@@ -26,8 +27,7 @@ requirements:
     - hatchling
   run:
     - python >=${{ python_min }}
-    - hatch
-    - hatchling
+    - click
     - requests
     - rich
     - typer
